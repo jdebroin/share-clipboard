@@ -1,12 +1,11 @@
 Share Clipboard
 ===============
 
-When using PuTTY + tmux to connect to a remote server you may simply use
-Shift-Insert to paste the content of the Windows clipboard to the remote
+When using PuTTY + tmux to work on remote servers you may simply use
+Shift-Insert to paste the contents of the Windows clipboard to the remote
 server.
 
-The share-clipboard-sink.js in conjunction with tmux provides an easy
-way to copy from the remote server to the local Windows machine.
+Running share-clipboard-sink.js on the local machine in conjunction with tmux copy-pipe and netcat on the remote machine provides an easy way to copy from the remote server to the local Windows machine.
 
 How to Use
 ----------
@@ -15,39 +14,45 @@ How to Use
 
 1. Clone share-clipboard-sink to some local directory.
 
-2. <code>npm install</code>
+2. `npm install`
 
 3. Add a shortcut to the Startup folder
-Target: <code>node share-clipboad-sink.js</code>
-Start in: directory containing share-clipboard-sink.js.
+  - Target: `node share-clipboad-sink.js`
+  - Start in: directory containing share-clipboard-sink.js.
 
 4. Configure port forwarding in PuTTY, Connection, SSH, Tunnels
-Source port: 7582
-Destination: localhost:7582
-Remote
+  - Source port: 7582
+  - Destination: localhost:7582
+  - Remote
 
 ### Setup on remote machine
 
 1. Edit .tmux.conf
 
-2. Use Ctrl-a as the shortcut instead of Ctrl-b because it's better ;-)
-<code>set-option -g prefix C-a
-unbind-key C-b
-bind-key C-a send-prefix</code>
+2. Use Ctrl-a as the shortcut instead of Ctrl-b because it's better :wink:
+  ```
+  set-option -g prefix C-a
+  unbind-key C-b
+  bind-key C-a send-prefix
+  ```
 
-3. Use vi mode to move around in copy mode because it's better ;-)
-<code>set-option -g mode-keys vi</code>
+3. Use vi mode to move around in copy mode because it's better :wink:
+  ```
+  set-option -g mode-keys vi
+  ```
 
 4. Add a tmux key binding to send the selected text using netcat
-<code>bind-key -t vi-copy y copy-pipe "nc -q 0 localhost 7582"</code>
+  ```
+  bind-key -t vi-copy y copy-pipe "nc -q 0 localhost 7582"
+  ```
 
 ### Use it
 
-1. In tmux on remote machine, enter copy mode by typing Ctrl-a followed by \[ 
-2. Move to the start of the selection, then type space
-3. Move to the end of the selection, then type y
+1. In tmux on remote machine, enter copy mode by typing `Ctrl-a` followed by `[` 
+2. Move to the start of the selection, then type `space`
+3. Move to the end of the selection, then type `y`
 4. On local machine the copied selection is now available in the
-   clipboad, paste in your email!
+   clipboard so you may paste in your email, presentation or whatever!
 
 
 Information from the original author
