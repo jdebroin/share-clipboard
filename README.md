@@ -17,7 +17,7 @@ How to Use
 2. `npm install`
 
 3. Add a shortcut to the Startup folder
-  - Target: `node share-clipboad-sink.js`
+  - Target: `node share-clipboard-sink.js`
   - Start in: directory containing share-clipboard-sink.js.
 
 4. Configure port forwarding in PuTTY, Connection, SSH, Tunnels
