@@ -40,9 +40,10 @@ cd share-clipboard
 npm install
 ~~~
 
-2. Add a shortcut to the Startup folder
-    - Name: share-clipboard
-    - Command: cd ~/src/share-clipboard; node share-clipboard-sink.js
+2. Configure autostart
+~~~
+cp share-clipboard.desktop ~/.config/autostart
+~~~
 
 3. Add `RemoteForward 7582 localhost:7582` to ~/.ssh/config
 

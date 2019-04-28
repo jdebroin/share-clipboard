@@ -1,0 +1,11 @@
+[Desktop Entry]
+Version=0.9.4
+Type=Application
+Name=share-clipboard
+Comment=
+Path=/home/jacques/src/share-clipboard
+Exec=node share-clipboard-sink.js
+OnlyShowIn=XFCE;
+StartupNotify=false
+Terminal=false
+Hidden=false
