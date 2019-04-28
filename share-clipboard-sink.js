@@ -27,17 +27,19 @@ function writeToClipboard(text)
 
 var server = net.createServer(function (socket) {
     debugLog('client connected');
+    var buf = "";
 
-    // broadcast the data
+    // save the data
     socket.on('data', function (chunk) {
         var text = chunk.toString('utf8');
-        debugLog(text);
-        writeToClipboard(text);
+        debugLog('data: ' + text);
+        buf += text;
     });
 
     // remove client from the list
     socket.on('end', function() {
-        debugLog('client disconnected');
+        debugLog('end: ' + buf);
+        writeToClipboard(buf);
     });
 
     // error handling

@@ -10,20 +10,43 @@ Running share-clipboard-sink.js on the local machine in conjunction with tmux co
 How to Use
 ----------
 
-### Setup on local machine
+### Setup on local machine (Windows)
 
-1. Clone share-clipboard-sink to some local directory.
+1. Clone and build share-clipboard
 
-2. `npm install`
+~~~
+git clone git@github.com:jdebroin/share-clipboard.git
+cd share-clipboard
+npm install
+~~~
 
-3. Add a shortcut to the Startup folder
-  - Target: `node share-clipboard-sink.js`
-  - Start in: directory containing share-clipboard-sink.js.
+2. Add a shortcut to the Startup folder
+    - Target: `node share-clipboard-sink.js`
+    - Start in: directory containing share-clipboard-sink.js.
 
-4. Configure port forwarding in PuTTY, Connection, SSH, Tunnels
-  - Source port: 7582
-  - Destination: localhost:7582
-  - Remote
+3. In PuTTY, configure port forwarding in Connection, SSH, Tunnels
+    - Source port: 7582
+    - Destination: localhost:7582
+    - Remote
+
+### Setup on local machine (Linux)
+
+1. Clone and build share-clipboard
+
+~~~
+cd ~/src
+git clone git@github.com:jdebroin/share-clipboard.git
+cd share-clipboard
+npm install
+~~~
+
+2. Add a shortcut to the Startup folder
+    - Name: share-clipboard
+    - Command: cd ~/src/share-clipboard; node share-clipboard-sink.js
+
+3. Add `RemoteForward 7582 localhost:7582` to ~/.ssh/config
+
+4. install xclip
 
 ### Setup on remote machine
 
